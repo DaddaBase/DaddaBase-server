@@ -1,6 +1,6 @@
 const router = require("express").Router();
  
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
  
 const Resource = require('../models/Resource.model');
 const User = require('../models/User.model');
@@ -43,7 +43,7 @@ router.get('/resources/:resourceId', (req, res, next) => {
   }
  
   Resource.findById(resourceId)
-    .populate('tasks')
+    .populate('user')
     .then(resource => res.status(200).json(resource))
     .catch(error => res.json(error));
 });
@@ -58,7 +58,7 @@ router.put('/resources/:resourceId', (req, res, next) => {
     return;
   }
  
-  resource.findByIdAndUpdate(resourceId, req.body, { new: true })
+  Resource.findByIdAndUpdate(resourceId, req.body, { new: true })
     .then((updatedresource) => res.json(updatedresource))
     .catch(error => res.json(error));
 });
@@ -73,7 +73,7 @@ router.delete('/resources/:resourceId', (req, res, next) => {
     return;
   }
  
-  resource.findByIdAndRemove(resourceId)
+  Resource.findByIdAndRemove(resourceId)
     .then(() => res.json({ message: `resource with ${resourceId} is removed successfully.` }))
     .catch(error => res.json(error));
 });
