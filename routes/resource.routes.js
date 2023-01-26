@@ -2,49 +2,79 @@ const router = require("express").Router();
  
 const mongoose = require('mongoose');
  
+const Resource = require('../models/Resource.model');
 const User = require('../models/User.model');
+ 
+//  POST /api/resources  -  Creates a new resource
+router.post('/resources', (req, res, next) => {
+  const { title, description, url, userId } = req.body;
 
-//  GET /api/users/:userId -  Retrieves a specific user by id
-router.get('/users/:userId', (req, res, next) => {
-  const { userId } = req.params;
+  Resource.create({ title, description, url, user: userId })
+    .then(newResource => {
+      return User.findByIdAndUpdate(userId, { $push: { resources: newResource._id }})
+    })
+    .then(response => {
+        console.log("create resource success");
+        res.json(response)})
+    .catch(err => {
+        console.log("error crating new resource", err);
+        res.status(500).json(err)
+    });
+});
+
+// GET /api/resources -  Retrieves all of the resources
+router.get('/resources', (req, res, next) => {
+  Resource.find()
+    .populate('user')
+    .then(allResources => res.json(allResources))
+    .catch(err => {
+      console.log("error getting resources", err);
+      res.status(500).json(err)
+  });
+});
+
+//  GET /api/resources/:resourceId -  Retrieves a specific resource by id
+router.get('/resources/:resourceId', (req, res, next) => {
+  const { resourceId } = req.params;
  
-  if (!mongoose.Types.ObjectId.isValid(userId)) {
+  if (!mongoose.Types.ObjectId.isValid(resourceId)) {
     res.status(400).json({ message: 'Specified id is not valid' });
     return;
   }
  
-  User.findById(userId)
-    .then(user => res.status(200).json(user))
+  Resource.findById(resourceId)
+    .populate('user')
+    .then(resource => res.status(200).json(resource))
     .catch(error => res.json(error));
 });
  
  
-// PUT  /api/users/:userId  -  Updates a specific user by id
-router.put('/users/:userId', (req, res, next) => {
-  const { userId } = req.params;
+// PUT  /api/resources/:resourceId  -  Updates a specific resource by id
+router.put('/resources/:resourceId', (req, res, next) => {
+  const { resourceId } = req.params;
  
-  if (!mongoose.Types.ObjectId.isValid(userId)) {
+  if (!mongoose.Types.ObjectId.isValid(resourceId)) {
     res.status(400).json({ message: 'Specified id is not valid' });
     return;
   }
  
-  User.findByIdAndUpdate(userId, req.body, { new: true })
-    .then((updateduser) => res.json(updateduser))
+  Resource.findByIdAndUpdate(resourceId, req.body, { new: true })
+    .then((updatedresource) => res.json(updatedresource))
     .catch(error => res.json(error));
 });
  
  
-// DELETE  /api/users/:userId  -  Deletes a specific user by id
-router.delete('/users/:userId', (req, res, next) => {
-  const { userId } = req.params;
+// DELETE  /api/resources/:resourceId  -  Deletes a specific resource by id
+router.delete('/resources/:resourceId', (req, res, next) => {
+  const { resourceId } = req.params;
   
-  if (!mongoose.Types.ObjectId.isValid(userId)) {
+  if (!mongoose.Types.ObjectId.isValid(resourceId)) {
     res.status(400).json({ message: 'Specified id is not valid' });
     return;
   }
  
-  User.findByIdAndRemove(userId)
-    .then(() => res.json({ message: `user with ${userId} is removed successfully.` }))
+  Resource.findByIdAndRemove(resourceId)
+    .then(() => res.json({ message: `resource with ${resourceId} is removed successfully.` }))
     .catch(error => res.json(error));
 });
  
