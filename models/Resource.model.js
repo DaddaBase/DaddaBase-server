@@ -8,7 +8,8 @@ const resourceSchema = new Schema(
       required: [true, "Title is required."]
     },
     description: String,
-    url: String,
+    imageUrl: String,
+    videoUrl: String,
     user: { 
       type: Schema.Types.ObjectId, 
       ref: 'User'} 

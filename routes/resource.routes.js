@@ -7,9 +7,9 @@ const User = require('../models/User.model');
  
 //  POST /api/resources  -  Creates a new resource
 router.post('/resources', (req, res, next) => {
-  const { title, description, url, userId } = req.body;
+  const { title, description, imageUrl, videoUrl, userId } = req.body;
 
-  Resource.create({ title, description, url, user: userId })
+  Resource.create({ title, description,  imageUrl, videoUrl, user: userId })
     .then(newResource => {
       return User.findByIdAndUpdate(userId, { $push: { resources: newResource._id }})
     })
