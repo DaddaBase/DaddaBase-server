@@ -58,15 +58,17 @@ router.post("/signup", (req, res, next) => {
 
       // Create the new user in the database
       // We return a pending promise, which allows us to chain another `then`
-      return User.create({ email, password: hashedPassword, name });
+      return User.create({
+        email, password: hashedPassword, name, username: "New User", profileImage:  "https://t3.ftcdn.net/jpg/02/24/88/44/360_F_224884444_rm9bNOVRtYx5HNyhbe1sTnGnVrpv0v1i.jpg"
+      });
     })
     .then((createdUser) => {
       // Deconstruct the newly created user object to omit the password
       // We should never expose passwords publicly
-      const { email, name, _id } = createdUser;
+      const { email, name, _id, username, profileImage } = createdUser;
 
       // Create a new object that doesn't expose the password
-      const user = { email, name, _id };
+      const user = { email, name, _id, username, profileImage };
 
       // Send a json response containing the user object
       res.status(201).json({ user: user });

@@ -18,6 +18,8 @@ const userSchema = new Schema(
       type: String,
       required: [true, "Name is required."],
     },
+    username: String,
+    profileImage: String,
     resources: [ { 
       type: Schema.Types.ObjectId, 
       ref: 'Resource' } ],
