@@ -14,6 +14,8 @@ router.get('/users/:userId', (req, res, next) => {
   }
  
   User.findById(userId)
+    .populate('resources')
+    .populate('posts')
     .then(user => res.status(200).json(user))
     .catch(error => res.json(error));
 });

@@ -23,7 +23,8 @@ const userSchema = new Schema(
       ref: 'Resource' } ],
     posts: [ { 
       type: Schema.Types.ObjectId, 
-      ref: 'Post' } ]
+      ref: 'Post' } ],
+    profileImg: String
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`

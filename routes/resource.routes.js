@@ -9,7 +9,7 @@ const User = require('../models/User.model');
 router.post('/resources', (req, res, next) => {
   const { title, description, imageUrl, videoUrl, userId } = req.body;
 
-  Resource.create({ title, description,  imageUrl, videoUrl, user: userId })
+  Resource.create({ title, description, imageUrl, videoUrl, user: userId })
     .then(newResource => {
       return User.findByIdAndUpdate(userId, { $push: { resources: newResource._id }})
     })
