@@ -18,6 +18,13 @@ const userSchema = new Schema(
       type: String,
       required: [true, "Name is required."],
     },
+    country: {
+      type: String,
+    },
+    dadLevel: {
+      type: String,
+      enum: ["First-Timer", "Intermmediate", "Veteran"]
+    },
     username: String,
     profileImage: String,
     resources: [ { 
@@ -26,7 +33,12 @@ const userSchema = new Schema(
     posts: [ { 
       type: Schema.Types.ObjectId, 
       ref: 'Post' } ],
-    profileImg: String
+    profileImg: String,
+    isAdmin: {
+      type: Boolean,
+      required: true, 
+      default: false,
+    }
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
