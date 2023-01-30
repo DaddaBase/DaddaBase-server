@@ -464,7 +464,7 @@ const products = [{
     "images": "http://dummyimage.com/190x100.png/5fa2dd/ffffff",
     "reviews": "molestie lorem quisque ut erat curabitur gravida nisi at nibh in hac habitasse platea dictumst aliquam"
   }, {
-    "name": "CHLOROPROCAINE HYDROCHLORIDE",
+    "name": "CHLORmnkjnhknOPROCAINE HYDROCHLORIDE",
     "description": "sit amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel",
     "category": "Chloroprocaine Hydrochloride",
     "count": 32,
@@ -479,7 +479,7 @@ const products = [{
     "images": "http://dummyimage.com/173x100.png/cc0000/ffffff",
     "reviews": "ac neque duis bibendum morbi non quam nec dui luctus rutrum"
   }, {
-    "name": "OCTINOXATE and Oxybenzone",
+    "name": "OCTIN mmnbjbnnjOXATE and Oxybenzone",
     "description": "vel augue vestibulum rutrum rutrum neque aenean auctor gravida sem praesent id massa",
     "category": "esika",
     "count": 33,
@@ -539,7 +539,7 @@ const products = [{
     "images": "http://dummyimage.com/136x100.png/cc0000/ffffff",
     "reviews": "libero non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla"
   }, {
-    "name": "OCTINOXATE and TITANIUM DIOXIDE",
+    "name": "OCTIN  kmnkOXATE and TITANIUM DIOXIDE",
     "description": "lectus suspendisse potenti in eleifend quam a odio in hac habitasse platea dictumst maecenas ut massa quis augue luctus",
     "category": "NARS PURE RADIANT TINTED MOISTURIZER",
     "count": 37,
@@ -689,7 +689,7 @@ const products = [{
     "images": "http://dummyimage.com/146x100.png/ff4444/ffffff",
     "reviews": "primis in faucibus orci luctus et ultrices posuere cubilia curae mauris viverra diam"
   }, {
-    "name": "Bromocriptine Mesylate",
+    "name": "BromoMN N vncriptine Mesylate",
     "description": "dis parturient montes nascetur ridiculus mus vivamus vestibulum sagittis sapien",
     "category": "Bromocriptine Mesylate",
     "count": 47,
@@ -748,7 +748,39 @@ const products = [{
     },
     "images": "http://dummyimage.com/162x100.png/ff4444/ffffff",
     "reviews": "lacus at velit vivamus vel nulla eget eros elementum pellentesque quisque porta volutpat"
-  }]
+  },
+  {
+    "name": "Benzalknsnsdjkbnsjkdvnasjdnkonium Chloride",
+    "description": "nam ul,y jKBSKJDVsdkjvnices libero non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit ac nulla sed vel enim sit",
+    "category": "Sani Professional Brand Sani-Hands for KidsHand Wipes",
+    "count": 2,
+    "price": 488,
+    "rating": 4,
+    "reviewCount": 2,
+    "sales": 2,
+    "attributes": {
+      "key": "Maple Bay Seaplane Base",
+      "value": "Kookaburra, laughing"
+    },
+    "images": "http://dummyimage.com/229x100.png/ff4444/ffffff",
+    "reviews": "praesent blandit lacinia erat vestibulum sed magna at nunc commodo placerat praesent blandit nam nulla integer"
+  }, {
+    "name": "BenzkNBSJCBsjdbSJknsnsdjkbnsjkdvnasjdnkonium Chloride",
+    "description": "nam ul,y jKBSKJDVsdkjvnices libero non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit ac nulla sed vel enim sit",
+    "category": "Sani Professional Brand Sani-Hands for KidsHand Wipes",
+    "count": 2,
+    "price": 4949494949,
+    "rating": 4,
+    "reviewCount": 2,
+    "sales": 2,
+    "attributes": {
+      "key": "Maple Bay Seaplane Base",
+      "value": "Kookaburra, laughing"
+    },
+    "images": "http://dummyimage.com/229x100.png/ff4444/ffffff",
+    "reviews": "praesent blandit lacinia erat vestibulum sed magna at nunc commodo placerat praesent blandit nam nulla integer"
+  },
+]
 
 
   module.exports = products

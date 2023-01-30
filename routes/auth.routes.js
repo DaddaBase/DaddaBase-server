@@ -59,7 +59,7 @@ router.post("/signup", (req, res, next) => {
       // Create the new user in the database
       // We return a pending promise, which allows us to chain another `then`
       return User.create({
-        email, password: hashedPassword, name, username: "New User", profileImage:  "https://t3.ftcdn.net/jpg/02/24/88/44/360_F_224884444_rm9bNOVRtYx5HNyhbe1sTnGnVrpv0v1i.jpg"
+        email: email.toLowerCase(), password: hashedPassword, name, username: "New User", profileImage:  "https://t3.ftcdn.net/jpg/02/24/88/44/360_F_224884444_rm9bNOVRtYx5HNyhbe1sTnGnVrpv0v1i.jpg"
       });
     })
     .then((createdUser) => {

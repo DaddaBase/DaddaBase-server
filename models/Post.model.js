@@ -5,13 +5,13 @@ const postSchema = new Schema(
   {
     title: {
       type: String,
-      required: false,
+      required: true,
     },
     description: String,
     user: { 
-      //type: Schema.Types.ObjectId, 
-      //ref: 'User'
-    type: Number} 
+      type: Schema.Types.ObjectId, 
+      ref: 'User'
+  } 
   },
   //{
     // this second object adds extra properties: `createdAt` and `updatedAt`
