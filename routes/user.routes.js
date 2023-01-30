@@ -46,8 +46,12 @@ router.delete('/users/:userId', (req, res, next) => {
   }
  
   User.findByIdAndRemove(userId)
-    .then(() => res.json({ message: `user with ${userId} is removed successfully.` }))
+    .then(() => {
+      res.json({ message: `user with ${userId} is removed successfully.` })
+    })
     .catch(error => res.json(error));
-});
+})
+
+
  
 module.exports = router;

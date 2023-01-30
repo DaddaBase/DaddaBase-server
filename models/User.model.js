@@ -33,7 +33,6 @@ const userSchema = new Schema(
     posts: [ { 
       type: Schema.Types.ObjectId, 
       ref: 'Post' } ],
-    profileImg: String,
     isAdmin: {
       type: Boolean,
       required: true, 
