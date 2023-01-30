@@ -22,6 +22,7 @@ app.use("/api", require("./routes/post.routes"));
 app.use("/api", require("./routes/user.routes"));
 app.use("/api", require("./routes/product.routes"));
 app.use("/api", require("./routes/category.routes"));
+app.use("/api", require("./routes/order.routes"));
 
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes

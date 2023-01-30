@@ -6,9 +6,9 @@ const Product = require('../models/Product.model');
  
 //  POST /api/resources  -  Creates a new resource
 router.post('/products', (req, res, next) => {
-  const {name} = req.body;
+  const {name, description} = req.body;
 
-  Product.create({ name })
+  Product.create({ name, description, category, count, price, rating, reviewCount, sales, attributes, images, reviews })
     .then(newProduct => {
       console.log('new product created')
     })

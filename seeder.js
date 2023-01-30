@@ -1,13 +1,14 @@
 const connectDB = require("../config/db")
 connectDB()
 
-const productData = require("./products")
-const Product = require("../models/Product.model")
+const categoryData = require("./categories")
+const Category = require("../models/CategoryModel")
 
 const importData = async () => {
     try {
-        await Product.collection.deleteMany({})
-        await Product.insertMany(productData)
+        await Category.collection.dropIndexes()
+        await Category.collection.deleteMany({})
+        await Category.insertMany(categoryData)
         console.log("Seeder data proceeded successfully")
         process.exit()
     } catch (error) {

@@ -5,17 +5,18 @@ const postSchema = new Schema(
   {
     title: {
       type: String,
-      required: [true, "Title is required."]
+      required: false,
     },
     description: String,
     user: { 
-      type: Schema.Types.ObjectId, 
-      ref: 'User'} 
+      //type: Schema.Types.ObjectId, 
+      //ref: 'User'
+    type: Number} 
   },
-  {
+  //{
     // this second object adds extra properties: `createdAt` and `updatedAt`
-    timestamps: true,
-  }
+   // timestamps: true,
+  //}
 );
 
 const Post = model("Post", postSchema);

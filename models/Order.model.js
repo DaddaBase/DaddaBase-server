@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
-const User = require("./UserModel")
+const User = require("../models/User.model")
 //1 to many relationship
 
 const orderSchema = mongoose.Schema({
     user: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: User,
+        //type: mongoose.Schema.Types.ObjectId,
+        //required: true,
+        type: Number,
     },
     orderTotal: {
         itemsCount: { type: Number, required: true }, cartSubTotal: { type: Number, required: true }
@@ -14,8 +14,8 @@ const orderSchema = mongoose.Schema({
     cartItems: [
         {
             name: { type: String, required: true },
-            price: { types: Number, required: true },
-            image: { path: { type: String, required: true } },
+            price: { type: Number, required: true },
+            image: { type: String, required: false  },
             quantity: { type: Number, required: true },//amount user wants to buy
             count: { type: Number, reuired: true }// amount left in stock
         }
