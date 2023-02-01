@@ -8,15 +8,19 @@ const postSchema = new Schema(
       required: true,
     },
     description: String,
-    user: { 
-      type: Schema.Types.ObjectId, 
+    user: {
+      type: Schema.Types.ObjectId,
       ref: 'User'
-    }
-  },
-  //{
-    // this second object adds extra properties: `createdAt` and `updatedAt`
-   // timestamps: true,
-  //}
+    },
+    comment: [{
+      username: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+      },
+      content: String,
+      replyTime: Date
+    }]
+  }
 );
 
 const Post = model("Post", postSchema);

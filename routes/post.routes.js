@@ -1,7 +1,5 @@
 const router = require("express").Router();
-
-// const mongoose = require('mongoose');
-
+const mongoose = require('mongoose');
 const Post = require('../models/Post.model');
 const User = require('../models/User.model');
 
@@ -18,7 +16,7 @@ router.post('/posts', (req, res, next) => {
             res.json(response)
         })
         .catch(err => {
-            console.log("error crating new resource", err);
+            console.log("error crating new post", err);
             res.status(500).json(err)
         });
 });
@@ -33,5 +31,20 @@ router.get('/posts', (req, res, next) => {
             res.status(500).json(err)
         });
 });
+
+//  GET /api/posts/:postId -  Retrieves a specific post by id
+router.get('/posts/:postId', (req, res, next) => {
+    const { postId } = req.params;
+   
+    if (!mongoose.Types.ObjectId.isValid(postId)) {
+      res.status(400).json({ message: 'Specified id is not valid' });
+      return;
+    }
+   
+    Post.findById(postId)
+      .populate('user')
+      .then(post => res.status(200).json(post))
+      .catch(error => res.json(error));
+  });
 
 module.exports = router;
