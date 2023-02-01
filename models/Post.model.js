@@ -13,12 +13,10 @@ const postSchema = new Schema(
       ref: 'User'
     },
     comment: [{
-      username: {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-      },
+      username: String,
+      profileImage: String,
       content: String,
-      replyTime: Date
+      // replyTime: Date
     }]
   }
 );

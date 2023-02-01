@@ -35,16 +35,35 @@ router.get('/posts', (req, res, next) => {
 //  GET /api/posts/:postId -  Retrieves a specific post by id
 router.get('/posts/:postId', (req, res, next) => {
     const { postId } = req.params;
-   
+
     if (!mongoose.Types.ObjectId.isValid(postId)) {
-      res.status(400).json({ message: 'Specified id is not valid' });
-      return;
+        res.status(400).json({ message: 'Specified id is not valid' });
+        return;
     }
-   
+
     Post.findById(postId)
-      .populate('user')
-      .then(post => res.status(200).json(post))
-      .catch(error => res.json(error));
-  });
+        .populate('user')
+        .then(post => res.status(200).json(post))
+        .catch(error => res.json(error));
+});
+
+//  POST /api/posts/:postId -  Create a new comment to post by id
+router.post('/posts/:postId', (req, res, next) => {
+    const { postId } = req.params;
+    const { username, profileImage, content } = req.body;
+
+    // Post.create({ username, profileImage, content })
+    Post.findByIdAndUpdate(postId, { $push: { comment: {username: username, profileImage: profileImage, content:content}}})
+        // .then( newPost => {
+        //     return Post.findByIdAndUpdate(postId, { $push: comment}, {new: true})
+        // })
+        .then(response => {
+            console.log("create comment success");
+            res.json(response)})
+        .catch(err => {
+            console.log("error crating new comment", err);
+            res.status(500).json(err)
+        });
+});
 
 module.exports = router;
