@@ -1,10 +1,20 @@
 const router = require("express").Router();
- 
 const mongoose = require('mongoose');
- 
 const Resource = require('../models/Resource.model');
 const User = require('../models/User.model');
+const fileUploader = require("../config/cloudinary.config");
+
+// POST "/api/upload" => Route that receives the image, sends it to Cloudinary via the fileUploader and returns the image URL
+router.post("/upload", fileUploader.single("imageUrl"), (req, res, next) => {
  
+  if (!req.file) {
+    next(new Error("No file uploaded!"));
+    return;
+  }
+
+  res.json({ secure_url: req.file.path });
+});
+
 //  POST /api/resources  -  Creates a new resource
 router.post('/resources', (req, res, next) => {
   const { title, description, imageUrl, videoUrl, userId } = req.body;
