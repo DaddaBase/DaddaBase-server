@@ -16,7 +16,7 @@ const postSchema = new Schema(
       username: String,
       profileImage: String,
       content: String,
-      // replyTime: Date
+      replyTime: Date
     }]
   }
 );

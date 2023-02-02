@@ -51,10 +51,10 @@ router.get('/posts/:postId', (req, res, next) => {
 //  POST /api/posts/:postId -  Create a new comment to post by id
 router.post('/posts/:postId', (req, res, next) => {
     const { postId } = req.params;
-    const { username, profileImage, content } = req.body;
+    const { username, profileImage, content, replyTime } = req.body;
 
-    // Post.create({ username, profileImage, content })
-    Post.findByIdAndUpdate(postId, { $push: { comment: {username: username, profileImage: profileImage, content:content}}})
+    // Post.create({ username, profileImage, content, replyTime })
+    Post.findByIdAndUpdate(postId, { $push: { comment: {username: username, profileImage: profileImage, content: content, replyTime: replyTime}}})
         // .then( newPost => {
         //     return Post.findByIdAndUpdate(postId, { $push: comment}, {new: true})
         // })
