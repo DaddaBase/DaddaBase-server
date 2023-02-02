@@ -5,9 +5,9 @@ const User = require('../models/User.model');
 
 //  POST /api/posts  -  Creates a new post
 router.post('/posts', (req, res, next) => {
-    const { title, description, userId } = req.body;
+    const { title, description, userId, createTime } = req.body;
 
-    Post.create({ title, description, user: userId })
+    Post.create({ title, description, user: userId, createTime })
         .then(newPost => {
             return User.findByIdAndUpdate(userId, { $push: { posts: newPost._id } })
         })

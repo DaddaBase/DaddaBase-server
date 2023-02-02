@@ -12,6 +12,7 @@ const postSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: 'User'
     },
+    createTime: Date,
     comment: [{
       username: String,
       profileImage: String,

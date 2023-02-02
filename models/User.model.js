@@ -18,13 +18,12 @@ const userSchema = new Schema(
       type: String,
       required: [true, "Name is required."],
     },
-    country: {
-      type: String,
-    },
     dadLevel: {
       type: String,
       enum: ["First-Timer", "Intermmediate", "Veteran"]
     },
+    partnerIsPregnant: Boolean,
+    dueDayOfBaby: Date,
     username: String,
     profileImage: String,
     resources: [ { 
@@ -32,12 +31,7 @@ const userSchema = new Schema(
       ref: 'Resource' } ],
     posts: [ { 
       type: Schema.Types.ObjectId, 
-      ref: 'Post' } ],
-    isAdmin: {
-      type: Boolean,
-      required: true, 
-      default: false,
-    }
+      ref: 'Post' } ]
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
