@@ -43,6 +43,7 @@ router.get('/posts/:postId', (req, res, next) => {
 
     Post.findById(postId)
         .populate('user')
+        .populate('comment')
         .then(post => res.status(200).json(post))
         .catch(error => res.json(error));
 });
