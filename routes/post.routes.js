@@ -66,4 +66,18 @@ router.post('/posts/:postId', (req, res, next) => {
         });
 });
 
+// DELETE  /api/post/:postId  -  Deletes a specific post by id
+router.delete('/posts/:postId', (req, res, next) => {
+    const { postId } = req.params;
+    
+    if (!mongoose.Types.ObjectId.isValid(postId)) {
+      res.status(400).json({ message: 'Specified id is not valid' });
+      return;
+    }
+   
+    Post.findByIdAndRemove(postId)
+      .then(() => res.json({ message: `post with ${postId} is removed successfully.` }))
+      .catch(error => res.json(error));
+  });
+
 module.exports = router;
