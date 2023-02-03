@@ -1,12 +1,12 @@
 const connectDB = require("../config/db");
 connectDB();
 
-const dadJokeData = require("./dadjokes");
-const DadJoke = require("../models/DadJoke.model");
+const productData = require("./products");
+const Product = require("../models/Product.model");
 
 const importData = async () => {
   try {
-    await DadJoke.insertMany(dadJokeData);
+    await Product.insertMany(productData);
     console.log("Seeder data proceeded successfully");
     process.exit();
   } catch (error) {
