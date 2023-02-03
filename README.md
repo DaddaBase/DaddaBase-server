@@ -14,7 +14,7 @@ REST API for our Daddabase app.
 
 To run in your computer, follow these steps:
 - clone 
-- install dependencies: `npm install`
+- install dependencies: `npm install`,`npm i @cloudinary/url-gen @cloudinary/react`
 - create a `.env` file with the following environment variables
   - ORIGIN, with the location of your frontend app (example, `ORIGIN=https://daddabase.netlify.app/`)
   - TOKEN_SECRET: used to sign auth tokens (example, `TOKEN_SECRET=ilovepizza`)
