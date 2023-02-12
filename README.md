@@ -61,4 +61,4 @@ To run in your computer, follow these steps:
 
 ## Demo
 
-A demo of the REST API can be found here: https://daddabase-server.adaptable.app/
+A demo of the REST API can be found here: https://daddabase.netlify.app/
